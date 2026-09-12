@@ -114,7 +114,7 @@ h1{font-size:52px;font-weight:900;line-height:1.25;margin:18px 0}
 
 footer{border-top:1px solid var(--line);background:#070304;padding:70px 0 30px;margin-top:40px}
 .cr-card{display:flex;align-items:center;gap:22px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;flex-wrap:wrap}
-.cr-av{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--red-d),var(--gold));display:grid;place-items:center;font-size:30px;font-weight:900;color:#fff;flex-shrink:0}
+.cr-av{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--red-d),var(--gold));display:grid;place-items:center;font-size:30px;font-weight:900;color:#fff;flex-shrink:0;object-fit:cover}
 .cr-info{flex:1;min-width:240px}
 .cr-info small{color:var(--dim);font-weight:800;font-size:11px;letter-spacing:1.5px}
 .cr-info h3{font-size:22px;font-weight:900;margin:4px 0}
@@ -243,10 +243,10 @@ footer{border-top:1px solid var(--line);background:#070304;padding:70px 0 30px;m
 <footer id="creator">
   <div class="wrap">
     <div class="cr-card reveal">
-      <div class="cr-av">M</div>
+      <img id="crAv" class="cr-av" src="https://github.com/MOOODEGRX-nah.png" alt="MOOODEGRX-nah">
       <div class="cr-info">
         <small>المنشئ والمطوّر</small>
-        <h3>MOOODEGRX-nah</h3>
+        <h3 id="crName">MOOODEGRX-nah</h3>
       </div>
       <a class="btn btn-ghost" href="https://github.com/MOOODEGRX-nah" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .26.18.57.69.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
@@ -300,5 +300,5 @@ fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
   })
   .catch(()=>{ /* عند فشل الـ API يبقى الرابط الثابت يعمل كما هو */ });
 </script>
-</body>
+<script>fetch("https://api.github.com/users/MOOODEGRX-nah").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(u){var av=document.getElementById("crAv");if(av&&u.avatar_url)av.src=u.avatar_url;var nm=document.getElementById("crName");if(nm)nm.textContent=u.name||u.login;}).catch(function(){});</script></body>
 </html>
